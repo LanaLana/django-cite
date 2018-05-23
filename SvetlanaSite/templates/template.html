@@ -1,0 +1,164 @@
+{% load staticfiles %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Путешествия по Крыму</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href='http://fonts.googleapis.com/css?family=Arimo:400,700' rel='stylesheet' type='text/css'>
+		<!--[if lte IE 8]><script src="{% static 'js/html5shiv.js' %}"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-panels.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel-noscript.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-desktop.css' %}" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'css/ie/v8.css' %}" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="{% static 'css/ie/v9.css' %}" /><![endif]-->
+	</head>
+	<body {% if tab == "homepage" %} class="homepage" {% endif %}>
+
+		<!-- Header -->
+		<div id="header">
+			<div class="container"> 
+				
+				<!-- Logo -->
+				<div id="logo">
+					<h1><a href="#">Крымские каникулы</a></h1>
+					<span>Инструкция по применению</span>
+				</div>
+				
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li {% if tab == "homepage" %} class="active" {% endif %}><a href="/">Главная</a></li>
+						<li {% if tab == "books" %} class="active" {% endif %}><a href="/books/">Литература</a></li>
+						<li {% if tab == "videos" %} class="active" {% endif %}><a href="/videos/">Видео</a></li>
+						<li {% if tab == "pictures" %} class="active" {% endif %}><a href="/pictures/">Картинки</a></li>
+					</ul>
+				</nav>
+			</div>
+
+		</div>
+		<h2>Приветсвуем Вас на сайте, посвященном активному досугу по горному, лесному и прибрежному Крыму.</h2>
+
+		<!-- Main -->
+		<div id="main">
+			<div class="container">
+				<div class="row"> 
+					
+					<!-- Content -->
+					<div id="content" class="8u skel-cell-important">
+						<section>
+							{% if tab == 'videos' %}
+							{% if video %}
+							<header>
+								<h2>{{video.title}}</h2>
+								<span class="byline">{{video.text}}</span>
+							</header>
+							<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{video.url}}" frameborder="0"></iframe>
+							{% else %}
+							Если сложно выбрать, куда отправиться, ознакомьтесь с маршрутами пройденными до Вас в представленных на этой странице видео.
+							{% endif %} 
+							{% endif %}
+						</section>
+
+
+						<section>
+							{% if tab == 'books' %}
+							{% if book %}
+							<header>
+								<h2>{{book.title}}</h2>
+								<h1>{{book.author}}</h1>
+								<span class="byline">{{book.text}}</span>
+								
+							</header>
+							<iframe <a href={{book.url}} target="_blank">Скачать</a> ></iframe>
+							{% else %}
+							На этой странице представлена литература, которая может быть полезна при планировании и реализации задуманных путешествий.  
+							{% endif %} 
+							{% endif %}
+						</section>
+
+						<section>
+							{% if tab == 'pictures' %}
+							{% if picture %}
+
+							<header>
+								<h2>{{picture.title}}</h2>
+							</header>
+							<div>
+								 <img src="{{ picture.img1.url }}" >
+							</div>
+						
+
+							<!--<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{video.url}}" frameborder="0"></iframe>-->
+							{% else %}
+							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
+							{% endif %} 
+							{% endif %}
+						</section>
+
+					</div>
+
+					<!-- Sidebar -->
+					<div id="sidebar" class="4u">
+						<section>
+							<header>
+								{% if tab == 'videos' %} <h2>Список видео</h2> {% endif %}
+							</header>
+							<ul class="style">
+								{% for v in videos %}
+								<li>
+									<a href="/videos/{{v.id}}">{{v.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</section>
+
+						<section>
+							<header>
+								{% if tab == 'books' %} <h2>Список книг</h2> {% endif %}
+							</header>
+							<ul class="style">
+								{% for b in books %}
+								<li>
+									<a href="/books/{{b.id}}">{{b.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</section>
+
+						<section>
+							<header>
+								{% if tab == 'pictures' %} <h2>Галерея фотографий</h2> {% endif %}
+							</header>
+							<ul class="style">
+								{% for p in pictures %}
+								<li>
+									<a href="/pictures/{{p.id}}">{{p.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</section>
+
+
+					</div>
+					
+				</div>
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div id="copyright">
+			<div class="container">
+				Svetlana &copy; 2018
+			</div>
+		</div>
+		
+	</body>
+</html>
