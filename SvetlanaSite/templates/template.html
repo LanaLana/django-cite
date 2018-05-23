@@ -84,6 +84,22 @@
 							{% endif %}
 						</section>
 
+						<!--
+						<section>
+							{% if tab == 'pictures' %}
+							{% if year2017 %}
+
+							<header>
+								<h2>jgvg</h2>
+							</header>
+							{% elif year2018 %}
+							<p>jbjb</p>
+							{% else %}
+							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
+							{% endif %} 
+							{% endif %}
+						</section> -->
+
 						<section>
 							{% if tab == 'pictures' %}
 							{% if picture %}
@@ -92,11 +108,11 @@
 								<h2>{{picture.title}}</h2>
 							</header>
 							<div>
-								 <img src="{{ picture.img1.url }}" >
+								 <img style="width: 245px; height: 247px;" src="% static {{ picture.img1.url }} %" >
 							</div>
 						
 
-							<!--<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{video.url}}" frameborder="0"></iframe>-->
+							
 							{% else %}
 							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
 							{% endif %} 
@@ -132,6 +148,16 @@
 								{% endfor %}
 							</ul>
 						</section>
+
+						<!--<section>
+							<header>
+								{% if tab == 'pictures' %} <h2>Галерея фотографий</h2> {% endif %}
+							</header>
+							<ul class="style">
+								<a href="/books/year2018">2018</a>
+								<a href="/books/year2017">2017</a>
+							</ul>
+						</section>-->
 
 						<section>
 							<header>

@@ -23,6 +23,13 @@ def pictures_list(request):
 	pictures = Picture.objects.all()
 	return render(request, 'template.html', {'tab': 'pictures', 'pictures': pictures})
 
+def year2017(request):
+	pictures = Picture.objects.all()
+	return render(request, 'template.html', {'tab': 'year2017', 'pictures': pictures})	
+
+def year2018(request):
+	pictures = Picture.objects.all()
+	return render(request, 'template.html', {'tab': 'year2017', 'pictures': pictures})	
 
 def book_page(request, pk):
 	books = Book.objects.all()

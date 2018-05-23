@@ -26,8 +26,11 @@ class Video(models.Model):
 class Picture(models.Model):
     title = models.CharField(max_length=200)
     img1 = models.ImageField(blank=True)
+    year = models.PositiveIntegerField()
+
     def __str__(self):
         return self.title + "."
+
 
 class Journal(models.Model):
     title = models.CharField(max_length=200)
