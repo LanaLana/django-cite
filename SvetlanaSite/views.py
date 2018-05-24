@@ -28,15 +28,8 @@ def pictures_list(request):
 	return render(request, 'template.html', {'tab': 'pictures', 'years': years})	
 
 def year_page(request, year):
-	pictures_l = Picture.objects.all()
-#	
+	pictures = Picture.objects.all().filter(year=year)
 
-	#pictures = Picture.objects.all(year=year)
-	pictures = []
-	for p in pictures_l:
-		if p.year == year:
-			pictures.append(p)
-#
 	return render(request, 'template.html', {'tab': 'year', 'pictures': pictures})	
 
 def book_page(request, pk):
