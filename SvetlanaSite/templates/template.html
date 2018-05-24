@@ -57,9 +57,10 @@
 							{% if tab == 'videos' %}
 							{% if video %}
 							<header>
-								<h2>{{video.title}}</h2>
+								<h1>{{video.title}}</h1>
 								<span class="byline">{{video.text}}</span>
 							</header>
+
 							<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{video.url}}" frameborder="0"></iframe>
 							{% else %}
 							Если сложно выбрать, куда отправиться, ознакомьтесь с маршрутами пройденными до Вас в представленных на этой странице видео.
@@ -72,12 +73,13 @@
 							{% if tab == 'books' %}
 							{% if book %}
 							<header>
-								<h2>{{book.title}}</h2>
+								<h1>{{book.title}}</h1>
 								<h1>{{book.author}}</h1>
 								<span class="byline">{{book.text}}</span>
 								
 							</header>
-							<iframe <a href={{book.url}} target="_blank">Скачать</a> ></iframe>
+							{{book.url}}
+							<a href={{book.url}} target="_blank">Скачать</a>
 							{% else %}
 							На этой странице представлена литература, которая может быть полезна при планировании и реализации задуманных путешествий.  
 							{% endif %} 
