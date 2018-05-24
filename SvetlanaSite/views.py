@@ -24,7 +24,7 @@ def pictures_list(request):
 	years = []
 	for p in pictures:
 		years.append(p.year)
-	years = list[set(years)]
+	years = list(set(years))
 	return render(request, 'template.html', {'tab': 'pictures', 'years': years})	
 
 def year_page(request, year):
