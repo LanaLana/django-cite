@@ -21,15 +21,15 @@ def video_page(request, pk):
 
 def pictures_list(request):
 	pictures = Picture.objects.all()
-	return render(request, 'template.html', {'tab': 'pictures', 'pictures': pictures})
+	years = []
+	for p in pictures:
+		years.append(p.year)
+	years = list[set(years)]
+	return render(request, 'template.html', {'tab': 'pictures', 'years': years})	
 
-#def year2017(request):
-#	pictures = Picture.objects.all()
-#	return render(request, 'template.html', {'tab': 'year2017', 'pictures': pictures})	
-
-#def year2018(request):
-#	pictures = Picture.objects.all()
-#	return render(request, 'template.html', {'tab': 'year2017', 'pictures': pictures})	
+def year_page(request, year):
+	pictures = Picture.objects.get(year=year)
+	return render(request, 'template.html', {'tab': 'year', 'pictures': pictures})	
 
 def book_page(request, pk):
 	books = Book.objects.all()

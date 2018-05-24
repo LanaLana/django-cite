@@ -84,35 +84,29 @@
 							{% endif %}
 						</section>
 
-						<!--
+						
 						<section>
 							{% if tab == 'pictures' %}
-							{% if year2017 %}
-
+							{% if year %}
 							<header>
-								<h2>jgvg</h2>
+								<h2>Архив путешествий за {{year}} год</h2>
 							</header>
-							{% elif year2018 %}
-							<p>jbjb</p>
 							{% else %}
-							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
-							{% endif %} 
+							<p>Здесь собран архив фотографий по годам.</p>
 							{% endif %}
-						</section> -->
+							{% endif %}
+						</section>
 
 						<section>
-							{% if tab == 'pictures' %}
+							{% if tab == 'year' %}
 							{% if picture %}
 
 							<header>
 								<h2>{{picture.title}}</h2>
 							</header>
 							<div>
-								 <img style="width: 245px; height: 247px;" src="% static {{ picture.img1.url }} %" >
+								 <img src="{{ picture.img1.url }}" >
 							</div>
-						
-
-							
 							{% else %}
 							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
 							{% endif %} 
@@ -122,10 +116,11 @@
 					</div>
 
 					<!-- Sidebar -->
+					{% if tab == 'videos' %} 
 					<div id="sidebar" class="4u">
 						<section>
 							<header>
-								{% if tab == 'videos' %} <h2>Список видео</h2> {% endif %}
+								<h2>Список видео</h2> 
 							</header>
 							<ul class="style">
 								{% for v in videos %}
@@ -135,10 +130,12 @@
 								{% endfor %}
 							</ul>
 						</section>
+						{% endif %}
 
+						{% if tab == 'books' %}
 						<section>
 							<header>
-								{% if tab == 'books' %} <h2>Список книг</h2> {% endif %}
+							 <h2>Список книг</h2> 
 							</header>
 							<ul class="style">
 								{% for b in books %}
@@ -148,18 +145,39 @@
 								{% endfor %}
 							</ul>
 						</section>
+						{% endif %}
 
-						<!--<section>
+						{% if tab == 'pictures' %}
+						<section>
 							<header>
-								{% if tab == 'pictures' %} <h2>Галерея фотографий</h2> {% endif %}
+								 <h2>Галерея фотографий по годам</h2> 
 							</header>
 							<ul class="style">
-								<a href="/books/year2018">2018</a>
-								<a href="/books/year2017">2017</a>
+								{% for y in years %}
+								<li>
+									<a href="/pictures/{{y}}">{{y}}</a>
+								</li>
+								{% endfor %}
 							</ul>
-						</section>-->
+						</section>
+						{% endif %}
 
+						{% if tab == 'year' %}
 						<section>
+							<header>
+								 <h2>Галерея фотографий</h2> 
+							</header>
+							<ul class="style">
+								{% for p in pictures %}
+								<li>
+									<a href="/pictures/{{p.id}}">{{p.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</section>
+						{% endif %}
+
+						<!--<section>
 							<header>
 								{% if tab == 'pictures' %} <h2>Галерея фотографий</h2> {% endif %}
 							</header>
@@ -170,7 +188,7 @@
 								</li>
 								{% endfor %}
 							</ul>
-						</section>
+						</section>-->
 
 
 					</div>
