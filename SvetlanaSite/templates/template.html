@@ -87,12 +87,18 @@
 						
 						<section>
 							{% if tab == 'pictures' %}
-							{% if year %}
+
+							{% if picture %}
+
 							<header>
-								<h2>Архив путешествий за {{year}} год</h2>
+								<h2>{{picture.title}}</h2>
 							</header>
+							<div>
+								 <img width="500" height="300" src="{{ picture.img1.url }}" >
+								 <img width="500" height="300" src="{{ picture.img2.url }}" >
+							</div>
 							{% else %}
-							<p>Здесь собран архив фотографий по годам.</p>
+							Здесь собран архив фотографий красивых мест, чтобы вдохновлять Вас на новые путешествия.
 							{% endif %}
 							{% endif %}
 						</section>
@@ -170,7 +176,7 @@
 							<ul class="style">
 								{% for p in pictures %}
 								<li>
-									<a href="/pictures/{{p.id}}">{{p.title}}</a>
+									<a href="/years/{{p.id}}">{{p.title}}</a>
 								</li>
 								{% endfor %}
 							</ul>
